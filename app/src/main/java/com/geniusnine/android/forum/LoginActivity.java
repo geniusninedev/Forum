@@ -18,6 +18,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.firebase.client.AuthData;
@@ -42,6 +43,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         //
 
         //Add YOUR Firebase Reference URL instead of the following URL
-        myFirebaseRef = new Firebase("https://androidbashfirebase.firebaseio.com/");
+        myFirebaseRef = new Firebase("https://forum-6136c.firebaseio.com/");
 
     }
 
